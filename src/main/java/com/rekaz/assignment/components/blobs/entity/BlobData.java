@@ -8,8 +8,7 @@ import lombok.Data;
 public class BlobData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String base64Data;
 
