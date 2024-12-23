@@ -1,4 +1,4 @@
-package com.rekaz.assignment.components.blobs.service.impl;
+package com.rekaz.assignment.components.storages.service.impl;
 
 import com.rekaz.assignment.components.blobs.dto.BlobResponse;
 import com.rekaz.assignment.components.blobs.entity.BlobData;
@@ -6,7 +6,7 @@ import com.rekaz.assignment.components.blobs.entity.BlobMetadata;
 import com.rekaz.assignment.components.blobs.enums.StorageTypeEnum;
 import com.rekaz.assignment.components.blobs.repository.BlobDataRepo;
 import com.rekaz.assignment.components.blobs.repository.BlobMetadataRepo;
-import com.rekaz.assignment.components.blobs.service.StorageService;
+import com.rekaz.assignment.components.storages.service.StorageService;
 import org.springframework.stereotype.Service;
 
 @Service("dbStorageService")

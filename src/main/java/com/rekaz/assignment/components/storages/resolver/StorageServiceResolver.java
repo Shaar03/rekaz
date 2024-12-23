@@ -1,7 +1,7 @@
-package com.rekaz.assignment.components.blobs.resolver;
+package com.rekaz.assignment.components.storages.resolver;
 
 import com.rekaz.assignment.components.blobs.enums.StorageTypeEnum;
-import com.rekaz.assignment.components.blobs.service.StorageService;
+import com.rekaz.assignment.components.storages.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
