@@ -38,11 +38,11 @@ public class DatabaseStorageService implements StorageService {
 
     @Override
     public BlobResponse retrieve(String id) {
-        BlobData blobData = blobDataRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Blob not found"));
-
         BlobMetadata metadata = blobMetadataRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Blob metadata not found"));
+
+        BlobData blobData = blobDataRepo.findByMetadata(metadata)
+                .orElseThrow(() -> new RuntimeException("Blob not found"));
 
         return new BlobResponse(
                 metadata.getId(),
