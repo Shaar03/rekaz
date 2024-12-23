@@ -31,7 +31,6 @@ public class DatabaseStorageService implements StorageService {
         blobMetadataRepo.saveAndFlush(metadata);
 
         BlobData blobData = new BlobData();
-        blobData.setId(id);
         blobData.setBase64Data(data);
         blobData.setMetadata(metadata);
         blobDataRepo.save(blobData);

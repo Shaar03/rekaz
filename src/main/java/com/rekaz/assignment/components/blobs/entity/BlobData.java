@@ -8,12 +8,14 @@ import lombok.Data;
 public class BlobData {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @Column(columnDefinition = "TEXT")
     private String base64Data;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "meta_id")
     private BlobMetadata metadata;
 }
 
