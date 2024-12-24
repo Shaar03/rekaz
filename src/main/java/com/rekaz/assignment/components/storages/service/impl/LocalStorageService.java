@@ -16,7 +16,7 @@ import java.util.Date;
 @Service("localStorageService")
 public class LocalStorageService implements StorageService {
 
-    @Value("${STORAGE_PATH}")
+    @Value("${STORAGE_ROOT_PATH}")
     private String storageRootPath;
 
     private final BlobMetadataRepo blobMetadataRepo;
