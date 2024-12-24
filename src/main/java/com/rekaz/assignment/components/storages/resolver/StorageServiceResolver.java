@@ -2,7 +2,6 @@ package com.rekaz.assignment.components.storages.resolver;
 
 import com.rekaz.assignment.components.blobs.enums.StorageTypeEnum;
 import com.rekaz.assignment.components.storages.service.StorageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -16,12 +15,14 @@ public class StorageServiceResolver {
     public StorageServiceResolver(
             @Qualifier("dbStorageService") StorageService dbStorageService,
             @Qualifier("localStorageService") StorageService localStorageService,
-            @Qualifier("s3StorageService") StorageService s3StorageService
+            @Qualifier("s3StorageService") StorageService s3StorageService,
+            @Qualifier("ftpStorageService") StorageService ftpStorageService
     ) {
         this.storageServices = Map.of(
                 StorageTypeEnum.DB_TABLE, dbStorageService,
                 StorageTypeEnum.LOCAL_FILE_SYSTEM, localStorageService,
-                StorageTypeEnum.S3, s3StorageService
+                StorageTypeEnum.S3, s3StorageService,
+                StorageTypeEnum.FTP, ftpStorageService
         );
     }
 
