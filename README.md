@@ -104,6 +104,15 @@ Include the received `token` in the `Authorization` header (`Bearer token`) for 
   - `Authorization: Bearer <token>`
 - **Path Parameter:**
   - `id`: The identifier of the blob.
+- **Retrieve Blob Example Response:**
+  ```json
+  {
+      "id": "any_valid_string_or_identifier",
+      "data": "SGVsbG8gU2ltcGxlIFN0b3JhZ2UgV29ybGQh",
+      "size": "27",
+      "created_at": "2023-01-22T21:37:55Z"
+  }
+  ```
 
 ---
 
