@@ -13,16 +13,15 @@ public class StorageServiceResolver {
 
     private final Map<StorageTypeEnum, StorageService> storageServices;
 
-    @Autowired
     public StorageServiceResolver(
             @Qualifier("dbStorageService") StorageService dbStorageService,
-            @Qualifier("localStorageService") StorageService localStorageService
-            // TODO: add other storage services if needed
+            @Qualifier("localStorageService") StorageService localStorageService,
+            @Qualifier("s3StorageService") StorageService s3StorageService
     ) {
         this.storageServices = Map.of(
                 StorageTypeEnum.DB_TABLE, dbStorageService,
-                StorageTypeEnum.LOCAL_FILE_SYSTEM, localStorageService
-                // TODO: add other types
+                StorageTypeEnum.LOCAL_FILE_SYSTEM, localStorageService,
+                StorageTypeEnum.S3, s3StorageService
         );
     }
 
