@@ -15,12 +15,14 @@ public class StorageServiceResolver {
 
     @Autowired
     public StorageServiceResolver(
-            @Qualifier("dbStorageService") StorageService dbStorageService
-            //TODO: add other storage services
+            @Qualifier("dbStorageService") StorageService dbStorageService,
+            @Qualifier("localStorageService") StorageService localStorageService
+            // TODO: add other storage services if needed
     ) {
         this.storageServices = Map.of(
-                StorageTypeEnum.DB_TABLE, dbStorageService
-                //TODO: add other types
+                StorageTypeEnum.DB_TABLE, dbStorageService,
+                StorageTypeEnum.LOCAL_FILE_SYSTEM, localStorageService
+                // TODO: add other types
         );
     }
 

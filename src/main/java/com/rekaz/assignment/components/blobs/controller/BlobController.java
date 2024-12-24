@@ -6,6 +6,7 @@ import com.rekaz.assignment.components.blobs.request.BlobStorageRequest;
 import com.rekaz.assignment.components.blobs.service.BlobService;
 import com.rekaz.assignment.components.storages.resolver.StorageServiceResolver;
 import com.rekaz.assignment.components.storages.service.StorageService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,18 +37,20 @@ public class BlobController {
         }
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getBlob(@PathVariable String id) {
+    @GetMapping("/**")
+    public ResponseEntity<?> getBlob(HttpServletRequest request) {
         try {
-            StorageTypeEnum storageType = blobService.getTypeFromId(id);
+            String fullPath = request.getRequestURI().substring("/v1/blobs/".length());
+
+            StorageTypeEnum storageType = blobService.getTypeFromId(fullPath);
 
             if (storageType == null) {
-                return ResponseEntity.status(404).body("Blob metadata not found for id: " + id);
+                return ResponseEntity.status(404).body("Blob metadata not found for id: " + fullPath);
             }
 
             StorageService storageService = storageServiceResolver.resolve(storageType);
 
-            BlobResponse response = storageService.retrieve(id);
+            BlobResponse response = storageService.retrieve(fullPath);
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
