@@ -33,7 +33,7 @@ public class BlobController {
 
             return ResponseEntity.ok("Blob saved successfully using " + request.getType());
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error saving blob: " + e.getMessage());
+            return ResponseEntity.status(400).body("Request Rejected - Error saving blob: " + e.getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ public class BlobController {
 
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Error retrieving blob: " + e.getMessage());
+            return ResponseEntity.status(400).body("Error retrieving blob: " + e.getMessage());
         }
     }
 }
